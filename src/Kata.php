@@ -22,13 +22,18 @@ class Kata
 
         for ($l = 'A'; $l <= $letter; $l++) {
             if ('A' === $l) {
-                $topDiamond[]  = str_repeat(' ', $outerPaddingSize).$l;
+                $topDiamond[] = str_repeat(' ', $outerPaddingSize).$l;
                 array_unshift($bottomDiamond, str_repeat(' ', $outerPaddingSize).$l);
             } else {
-                $topDiamond[] = str_repeat(' ', $outerPaddingSize).$l.str_repeat(' ', $innerPaddingSize).$l.str_repeat(' ', $outerPaddingSize);
+                if (1 === strlen($l)) {
+                    $topDiamond[] = str_repeat(' ', $outerPaddingSize).$l.str_repeat(' ',
+                            $innerPaddingSize).$l.str_repeat(' ', $outerPaddingSize);
 
-                if ($letter !== $l) {
-                    array_unshift($bottomDiamond, str_repeat(' ', $outerPaddingSize).$l.str_repeat(' ', $innerPaddingSize).$l.str_repeat(' ', $outerPaddingSize));
+                    if ($letter !== $l) {
+                        array_unshift($bottomDiamond,
+                            str_repeat(' ', $outerPaddingSize).$l.str_repeat(' ', $innerPaddingSize).$l.str_repeat(' ',
+                                $outerPaddingSize));
+                    }
                 }
             }
 
