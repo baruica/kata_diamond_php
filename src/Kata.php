@@ -5,7 +5,7 @@ class Kata
 {
     public function print_diamond(string $letter) : string
     {
-        return implode(PHP_EOL, $this->diamond($letter));
+        return implode(PHP_EOL, $this->diamond(strtoupper($letter)));
     }
 
     private function diamond(string $letter) : array
